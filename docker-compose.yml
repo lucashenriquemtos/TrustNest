@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  postgre:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - trustnest-network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.50'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+
+networks:
+  trustnest-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
