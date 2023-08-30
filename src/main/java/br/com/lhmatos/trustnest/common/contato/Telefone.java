@@ -10,6 +10,7 @@ import lombok.Data;
 public class Telefone {
 
 	@NotBlank(message = "Telefone é obrigatório.")
-	@Pattern(regexp = "^[1-9]{2}[9]?[0-9]{8}$", message = "Telefone inválido.")
+	@Pattern(regexp = "^\\(\\d{2}\\) \\d{5}-\\d{4}$", message = "Telefone inválido.")
 	private String numero;
 }
+
